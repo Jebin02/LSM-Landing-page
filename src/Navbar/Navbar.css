@@ -1,0 +1,185 @@
+/* RESET (fix left gap issue) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0; /* IMPORTANT: removes left gap */
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* SCROLL EFFECT */
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* CONTAINER */
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 30px; /* balanced spacing */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* LOGO IMAGE (ZOOM FIX) */
+.logo img {
+  height: 45px;        /* better size */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.1);
+}
+
+/* LOGO TEXT */
+.logo span {
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  -webkit-text-fill-color: transparent;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+/* NAV LINK STYLE */
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  padding-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: lightgrey;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, #6366f1);
+  transition: width 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ACTIVE LINK (CLICKED PAGE) */
+.active-link {
+  color: #fff;
+}
+
+.active-link::after {
+  width: 100%;
+}
+
+/* CTA BUTTON */
+.cta-btn {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  padding: 10px 18px;
+  border-radius: 12px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+}
+
+/* MOBILE MENU ICON */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  color: white;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+    font-size: 24px;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-menu a {
+    padding: 12px 0;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .mobile-menu a:hover {
+    color: #fff;
+  }
+
+  .mobile-menu .cta-btn {
+    margin-top: 10px;
+  }
+}
+
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
